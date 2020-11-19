@@ -1017,8 +1017,10 @@ out:
 static int sched_rt_runtime_exceeded(struct rt_rq *rt_rq)
 {
 	u64 runtime = sched_rt_runtime(rt_rq);
+#ifdef CONFIG_RT_GROUP_SCHED
 	u64 runtime_pre = runtime; /* sched: get runtime */
 	int cpu = rq_cpu(rt_rq->rq);
+#endif
 
 	if (rt_rq->rt_throttled)
 		return rt_rq_throttled(rt_rq);
@@ -2096,7 +2098,9 @@ static int push_rt_task(struct rq *rq)
 		return 0;
 
 retry:
+#ifdef CONFIG_RT_GROUP_SCHED
 	rt_rq = next_task->rt.rt_rq;
+#endif
 	if (unlikely(next_task == rq->curr)) {
 		WARN_ON(1);
 		return 0;
