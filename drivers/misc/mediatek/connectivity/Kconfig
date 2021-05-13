@@ -370,3 +370,10 @@ config MTK_CONNSYS_DEDICATED_LOG_PATH
 	     (by EMI or other specific path)
 	  2. The scope may include (but not limited) Wi-Fi firmware log,
 	     BT firmware log, GPS firmware log etc.
+
+config MTK_COMBO_ENABLE_DEBUG
+        bool "Enable debugging in connectivity drivers"
+        default n
+        help
+          This will enable debugging for connectivity drivers.
+          If unsure say n
